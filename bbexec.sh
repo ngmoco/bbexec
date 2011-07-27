@@ -79,7 +79,6 @@ fi
 #If PID is not set we compute where the pid file should live
 #based on user level. Let's just start by making the pid named the same
 #as the basename of the daemon
-echo "PID LOCATION IS ${PID}"
 if [[ -z $PID ]]; then
     PID_FILE=`basename $DAEMON`
     PID_PATH="/"
