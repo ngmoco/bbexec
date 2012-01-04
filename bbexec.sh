@@ -108,11 +108,16 @@ fi
 
 #test that the pid file exists and is writable
 if [ ! -w $PID ]; then
-    #if not die a horrible death
-    if [ $VERBOSE -gt 0 ]; then 
-        echo "PID FILE NOT WRITABLE: ${PID}"
+    #try to create it
+    touch $PID
+    #check that we created it
+    if [$? == 1 ]; then
+        #if not die a horrible death
+        if [ $VERBOSE -gt 0 ]; then 
+            echo "PID FILE NOT WRITABLE: ${PID}"
+        fi
+        exit 1
     fi
-    exit 1
 fi
 
 if [ $VERBOSE -gt 0 ]; then
