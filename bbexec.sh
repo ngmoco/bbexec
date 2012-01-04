@@ -81,12 +81,22 @@ fi
 #as the basename of the daemon
 if [[ -z $PID ]]; then
     PID_FILE=`basename $DAEMON`
-    PID_PATH="/"
-    if [ ! `id -u` == "0" ]; then
-        PID_PATH="${PID_PATH}usr/local/"
-    fi
-    PID_PATH="${PID_PATH}var/run/"
-    PID="${PID_PATH}${PID_FILE}"
+    #Start by checking obvious locations
+    if [ -d "/var/run/$PID_FILE" ]; then
+        #if the daemon has a folder in /var/run
+        PID_PATH="/var/run/${PID_FILE}/"
+    elif [ -d "/usr/local/var/run/$PID_FILE" ]; then
+        #if the daemon has a folder in /usr/local/var/run
+        PID_PATH="/usr/local/var/run/$PID_FILE/"
+    else
+        PID_PATH="/"
+        if [ ! `id -u` == "0" ]; then
+			#if we are not running as root
+            PID_PATH="${PID_PATH}usr/local/"
+        fi
+        PID_PATH="${PID_PATH}var/run/"
+	fi
+    PID="${PID_PATH}${PID_FILE}.pid"
 fi
 
 if [ $VERBOSE -gt 0 ]; then
