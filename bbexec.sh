@@ -18,8 +18,11 @@ bbexec usage: $0 [-hv] -d path/to/executable [-p /path/to/pid-file] [-l /path/to
 
 This script will daemonize (background) an executable and then pass it on.
 NOTE: if the -p (pid-file) parameter is not set this script will attempt
-to write one out to /var/run/daemon-basename if run as root and 
-/usr/local/var/run/daemon-name if not run as root.
+to write one out to the following locations in order:
+/var/run/\`basename \$DAEMON\`/\`basename \$DAEMON\`.pid (if parent dir exists)
+/usr/local/var/run/\`basename \$DAEMON\`/\`basename \$DAEMON\`.pid (if parent dir exists)
+/var/run/\`basename \$DAEMON\`.pid (if run as root)
+/usr/local/var/run/\`basename \$DAEMON\`.pid (if not run as root)
 
 OPTIONS:
    -h       Show this message
