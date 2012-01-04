@@ -2,7 +2,7 @@ BBEXEC .1
 ============
 
 ## Usage
-bbgexec usage: bbexec.sh [-hv] -d path/to/executable [-p /path/to/pid-file] [-l /path/to/log] [-a "quoted space delimeted list of params"]
+bbexec usage: bbexec.sh [-hv] -d path/to/executable [-p /path/to/pid-file] [-l /path/to/log] [-a "quoted space delimeted list of params"]
 
 This script will daemonize (background) an executable and then pass it on.
 NOTE: if the -p(pid,pid-file) parameter is not set this script will attempt

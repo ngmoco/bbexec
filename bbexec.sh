@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #################################################################
-## bbgexec (Bash Background Exec)
+## bbexec (Bash Background Exec)
 ## Copyright 2011 FREEVERSE INC. All rights reserved.
 ## AUTHOR: Jesse Sanford 
 ## EMAIL: sanford@freeverse.com
@@ -14,7 +14,7 @@
 usage()
 {
 cat << EOF
-bbgexec usage: $0 [-hv] -d path/to/executable [-p /path/to/pid-file] [-l /path/to/log] [-a "quoted space delimeted list of params"]
+bbexec usage: $0 [-hv] -d path/to/executable [-p /path/to/pid-file] [-l /path/to/log] [-a "quoted space delimeted list of params"]
 
 This script will daemonize (background) an executable and then pass it on.
 NOTE: if the -p (pid-file) parameter is not set this script will attempt
